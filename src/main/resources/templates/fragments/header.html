@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+</head>
+
+<body>
+	<header class="header" th:fragment="header">
+		<div class="grid">
+			<nav class="header__navbar">
+				<ul class="header__navbar-list">
+					<li class="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
+						アプリに HIEP SHOP へ
+
+						<!-- header QR code -->
+						<div class="header_qr">
+							<img th:src="@{/assets/img/QRcode.png}" alt="" class="header__qr-img">
+							<div class="header__qr-apps">
+								<a href="" class="header__qr-link">
+									<img th:src="@{/assets/img/google_play.png}  " alt="Google Play"
+										class="header__qr-download-img">
+								</a>
+								<a href="" class="header__qr-link">
+									<img th:src="@{/assets/img/app_store.png}" alt="Apple Store"
+										class="header__qr-download-img">
+								</a>
+							</div>
+						</div>
+					</li>
+					<li class="header__navbar-item">
+						<span class="header__navbar-title--no-pointer">繋がる</span>
+						<a href="" class="header__navbar-icon-link">
+							<i class="header__navbar-icon fab fa-facebook"></i>
+						</a>
+						<a href="" class="header__navbar-icon-link">
+							<i class="header__navbar-icon fab fa-instagram-square"></i>
+						</a>
+					</li>
+				</ul>
+
+				<ul class="header__navbar-list">
+					<li class="header__navbar-item header__navbar-item--has-notify">
+						<a href="" class="header__navbar-item-link">
+							<i class="header__navbar-icon fas fa-bell"></i>
+							お知らせ
+						</a>
+						<div class="header__notify">
+							<header class="header__notify-header">
+								<h3>新しいお知らせ</h3>
+							</header>
+							<ul class="header__notify-list">
+								<li class="header__notify-item header__notify-item--viewed">
+									<a href="" class="header__notify-link">
+										<span>
+											<img src="https://aodaihanh.com/wp-content/uploads/2018/04/%C3%A1o-d%C3%A0i-truy%E1%BB%81n-th%E1%BB%91ng.jpg"
+												alt="" class="header__notify-img">
+										</span>
+										<div class="header__notify-info">
+											<span class="header__notify-name">伝統的なベトナムao
+												dai女性春ロングドレスチャイナドレス袍ヴィンテージ竹プリント</span>
+											<span class="header__notify-description">新着</span>
+										</div>
+									</a>
+								</li>
+								<li class="header__notify-item header__notify-item--viewed">
+									<a href="" class="header__notify-link">
+										<span>
+											<img src="https://aodaihanh.com/wp-content/uploads/2018/04/%C3%A1o-d%C3%A0i-truy%E1%BB%81n-th%E1%BB%91ng.jpg"
+												alt="" class="header__notify-img">
+										</span>
+										<div class="header__notify-info">
+											<span class="header__notify-name">AO dai チャイナドレス 2019 刺繍袍 AODAI
+												ベトナムドレス長袖ベルベットチャイナ弾性チーパオ V1385</span>
+											<span class="header__notify-description">新着</span>
+										</div>
+									</a>
+								</li>
+								<li class="header__notify-item header__notify-item--viewed">
+									<a href="" class="header__notify-link">
+										<span>
+											<img src="https://aodaihanh.com/wp-content/uploads/2018/04/%C3%A1o-d%C3%A0i-truy%E1%BB%81n-th%E1%BB%91ng.jpg"
+												alt="" class="header__notify-img">
+										</span>
+										<div class="header__notify-info">
+											<span
+												class="header__notify-name">Aodai-女性のためのチャイナドレス,伝統的なリネンの綿のドレス,花柄,エレガント,オリエンタル,2021</span>
+											<span class="header__notify-description">新着</span>
+										</div>
+									</a>
+								</li>
+							</ul>
+							<footer class="header__notify-footer">
+								<a href="" class="header__notify-footer-btn">すべて見る</a>
+							</footer>
+						</div>
+					</li>
+					<li class="header__navbar-item">
+						<a href="" class="header__navbar-item-link">
+							<i class="header__navbar-icon fas fa-question-circle"></i>
+							サポート
+						</a>
+					</li>
+					<!-- <li class="header__navbar-item header__navbar-item--strong header__navbar-item--separate">登録</li>
+                        <li class="header__navbar-item header__navbar-item--strong">ログイン</li> -->
+					<li class="header__navbar-item header__navbar-user">
+						<img src="https://cf.shopee.vn/file/9f01267f9fb66fa8ce7630d860a04193_tn" alt=""
+							class="header__navbar-user-img">
+						<span class="header__navbar-user-name">Trieu Quang Hiep</span>
+						<ul class="header__navbar-user-menu">
+							<li class="header__navbar-user-menu-item">
+								<a href="">アカウント</a>
+							</li>
+							<li class="header__navbar-user-menu-item">
+								<a href="">住所</a>
+							</li>
+							<li class="header__navbar-user-menu-item">
+								<a href="">注文</a>
+							</li>
+							<li class="header__navbar-user-menu-item">
+								<a href="">ログアウト</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<form th:action="@{product}" th:object="${searchModel}" method="post">
+				<div class="header-with-search">
+					<div class="header__logo">
+						<a href="product">
+							<img class="header__logo-img" th:src="@{/assets/img/AoDai-logo-black.png}" alt="Logo">
+						</a>
+					</div>
+					<div class="header__search">
+						<div class="header__search-input-wrap">
+							<input type="text" th:field="*{param}" class="header__search-input" placeholder="商品を検索する">
+						</div>
+						<div class="header__search-selection">
+							<span class="header__search-selection-label">Shop 以内</span>
+							<i class="header__search-selection-icon fas fa-angle-down"></i>
+							<ul class="header__search-option">
+								<li class="header__search-option-item">
+									<span>
+										Shop 以内
+										<i class="fas fa-check"></i>
+									</span>
+								</li>
+								<li class="header__search-option-item header__search-option-item--active">
+									<span>
+										Shop 以外
+										<i class="fas fa-check"></i>
+									</span>
+								</li>
+							</ul>
+						</div>
+						<button type="submit" class="header__search-btn">
+							<i class="header__search-btn-icon fas fa-search"></i>
+						</button>
+					</div>
+			</form>
+			<div class="header__cart">
+				<div class="header__cart-wrap">
+					<i class="header__cart-icon fas fa-shopping-cart"></i>
+					<div th:each="cart,number : ${cartProduct}">
+						<span class="header__cart-notice" th:text="${number.index}+1"></span>
+					</div>
+
+					<div class="header__cart-list">
+						<!-- No cart: header__cart-list--no-cart -->
+						<img th:src="@{/assets/img/no-cart.png}" alt="" class="header__cart-no-cart-img">
+						<span class="header__cart-list--no-cart-messenger">カートに商品がありません</span>
+						<!-- No cart: end -->
+						<h3 class="header__cart-heading">追加た商品</h3>
+						<ul class="header__notify-list" th:each="cart,number : ${cartProduct}">
+							<li class="header__notify-item header__notify-item--viewed">
+								<a href="" class="header__notify-link-cart">
+									<span class="header__notify-link-cart-item">
+										<img th:src="@{/product_img/}+${cart.image}" alt="" class="header__notify-img">
+										<span class="header__notify-name header__notify-name-cart"
+											th:text="|${cart.name}: ${cart.description}|"></span>
+									</span>
+									<div class="header__notify-info">
+										<span class="header__notify-description" th:text="|¥${cart.price}|"></span>
+									</div>
+								</a>
+							</li>
+						</ul>
+						<a href="doViewCart" class="header__cart-view-cart btn btn--primary">カートを見る</a>
+					</div>
+
+					<!-- Have cart -->
+				</div>
+			</div>
+		</div>
+		</div>
+	</header>
+	<!-- header stop -->
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout.html}">
+
+<head>
+
+</head>
+
+<body>
+	<div layout:fragment="content" class="grid__row app__content" th:each="product : ${detailProduct}">
+		<div class="grid__column-3">
+			<div class="product__image">
+				<img class="product-item__img--detail" th:src="@{/product_img/}+${product.image}"></img>
+			</div>
+		</div>
+		<div class="grid__column-3">
+			<div class="product-item">
+				<div class="product-item__name" th:text="${product.name}"></div>
+				<div class="product-item__rating">
+					<i class="product-item__star--gold fas fa-star"></i>
+					<i class="product-item__star--gold fas fa-star"></i>
+					<i class="product-item__star--gold fas fa-star"></i>
+					<i class="product-item__star--gold fas fa-star"></i>
+					<i class="product-item__star--gold fas fa-star"></i>
+				</div>
+				<p class="product-item__sold" th:text="|${product.age} 才|"></p>
+				<p class="product-item__introduce" 　th:text="${product.description}"></p>
+				<div class="product-item__price">
+					<p class="product-item__price-current" th:text="|¥${product.price}|"></p>
+				</div>
+				<div class="product-item__button">
+					<button class="product-item__btn btn">今すぐ購入</button>
+					<form th:action="@{doCart}" th:object="${productCartModel}" method="post">
+						<input type="hidden" th:value="${product.id}" name="id">
+						<input type="hidden" th:value="${product.name}" name="name">
+						<input type="hidden" th:value="${product.age}" name="age">
+						<input type="hidden" th:value="${product.sex}" name="sex">
+						<input type="hidden" th:value="${product.price}" name="price">
+						<input type="hidden" th:value="${product.image}" name="image">
+						<input type="hidden" th:value="${product.description}" name="description">
+						<button class="product-item__btn btn">カートに追加</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{CartLayout.html}">
+
+<head>
+
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="create-product create-product-table">
+			<h1 class="create-product-headding create-product-headding-cart">ショッピングカート</h1>
+			<div class="table-view" th:each="cart, number : ${cartProduct}">
+				<div class="view-item">
+					<div class="cart-table-index-number">
+						<span class="cart-table-index" th:text="${number.index}+1"></span>
+					</div>
+
+					<div class="view-item-image">
+						<img class="view-item-image-header" th:src="@{/product_img/}+${cart.image}">
+					</div>
+
+					<div class="view-item-content">
+						<div class="view-item-content-description" th:text="${cart.description}"></div>
+						<div class="view-item-content-name" th:text="|氏名：${cart.name}|"></div>
+						<div class="view-item-content-age" th:text="|性別：${cart.sex}|"></div>
+						<div class="view-item-content-sex" th:text="|年齢：${cart.age}|"></div>
+					</div>
+
+					<div class="view-item-price">
+						<div class="item-price-now" th:text="|¥${cart.price}|"></div>
+					</div>
+					<div class="view-item-price">
+						<form th:action="@{do-Delete-Item-Cart}" th:object="${productModel}" method="POST">
+							<input type="hidden" th:value="${cart.id}" name="id">
+							<button type="submit" class="item-btn-cart-now">✖️</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="total-price-cart">
+				<div class="total-price-cart-text">合計：</div>
+				<div class="total-price-cart-money" th:text="|¥ ${totalPrice}|"></div>
+				<button class="btn btn--primary btn--primary-view-cart" type="button">レジに進む</button>
+			</div>
+		</div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+</head>
+
+<body>
+	<ul class="pagination home-product__pagination" th:fragment="page">
+		<li class="pagination-item">
+			<a th:href="@{?page=1}" class="pagination-item__link">
+				<i class="pagination-item__icon fas fa-angle-left"></i>
+			</a>
+		</li>
+		<th:block th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+			<li class="pagination-item" th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
+				th:each="pageButton : ${#numbers.sequence(start, end)}">
+				<a th:href="@{?page={page} (page = ${pageButton})}" th:text=${pageButton}
+					class="pagination-item__link pagination-item--active"></a>
+			</li>
+		</th:block>
+		<li class="pagination-item">
+			<a th:href="@{?page={page} (page = ${pagination.totalPageCnt})}" class="pagination-item__link">
+				<i class="pagination-item__icon fas fa-angle-right"></i>
+			</a>
+		</li>
+	</ul>
+
+</body>
+
+</html>

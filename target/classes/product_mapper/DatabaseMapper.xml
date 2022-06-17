@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiep.product.mapper.ProductMapper">
+
+	<insert id="insertProduct">
+		INSERT INTO hiep_product(name, age, sex, price,
+		image, description, create_date) VALUES
+		(#{name}, #{age}, #{sex},
+		#{price}, #{image}, #{description}, #{create_date})
+	</insert>
+
+	<select id="selectProduct"
+		resultType="com.hiep.product.entity.ProductEntity">
+		SELECT * FROM hiep_product
+	</select>
+
+	<select id="getCartProduct"
+		resultType="com.hiep.product.entity.ShoppingCartEntity">
+		SELECT * FROM hiep_shopping_cart
+	</select>
+
+	<select id="detailProduct"
+		resultType="com.hiep.product.entity.ProductEntity">
+		SELECT * FROM hiep_product where id = #{id}
+	</select>
+
+	<insert id="addToCart">
+		INSERT INTO hiep_shopping_cart(name, age, sex, price,
+		image, description) VALUES
+		(#{name}, #{age}, #{sex}, #{price},
+		#{image}, #{description})
+	</insert>
+	<select id="getPriceOnCart" resultType="int">
+		SELECT
+		COALESCE(SUM(price),0) FROM hiep_shopping_cart
+	</select>
+	<delete id="deleteItemCart">
+		DELETE FROM hiep_shopping_cart WHERE id=#{id}
+	</delete>
+
+	<select id="getAllHiepProductRecodeCount" resultType="int">
+		select
+		count(*) from hiep_product
+	</select>
+
+	<select id="getManHiepProductRecodeCount" resultType="int">
+		select
+		count(*) from hiep_product where sex = #{sex}
+	</select>
+
+	<select id="getWomanHiepProductRecodeCount" resultType="int">
+		select
+		count(*) from hiep_product where sex = #{sex}
+	</select>
+
+	<select id="getSearchHiepProductRecodeCount" resultType="int">
+		select count(*) from hiep_product
+		<if test="param !=''">
+			<where>
+				name LIKE CONCAT('%', #{param}, '%')
+				or age LIKE CONCAT('%',
+				#{param}, '%')
+				or sex LIKE CONCAT('%', #{param}, '%')
+				or description
+				LIKE CONCAT('%', #{param}, '%')
+			</where>
+		</if>
+
+	</select>
+
+	<select id="getAllHiepProductRecodeCountBySession"
+		resultType="int">
+		select count(*) from hiep_product
+		<where>
+			name LIKE CONCAT('%', #{data}, '%')
+			or age LIKE CONCAT('%', #{data}, '%')
+			or sex LIKE CONCAT('%', #{data}, '%')
+			or description LIKE CONCAT('%', #{data}, '%')
+		</where>
+
+	</select>
+
+	<select id="findListPaging"
+		resultType="com.hiep.product.entity.ProductEntity">
+		select * from hiep_product
+		<if test="data !=''">
+			<where>
+				name LIKE CONCAT('%', #{data}, '%')
+				or age LIKE CONCAT('%',
+				#{data}, '%')
+				or sex LIKE CONCAT('%', #{data}, '%')
+				or description
+				LIKE CONCAT('%', #{data}, '%')
+			</where>
+		</if>
+		offset #{startIndex} limit
+		#{pageSize}
+
+	</select>
+
+	<select id="selectManProduct"
+		resultType="com.hiep.product.entity.ProductEntity">
+		select * from hiep_product where sex = '男性' offset
+		#{startIndex} limit
+		#{pageSize}
+	</select>
+
+	<select id="selectWomanProduct"
+		resultType="com.hiep.product.entity.ProductEntity">
+		select * from hiep_product where sex = '女性' offset
+		#{startIndex} limit
+		#{pageSize}
+	</select>
+
+	<select id="selectCheapPriceProduct"
+		resultType="com.hiep.product.entity.ProductEntity">
+		SELECT * FROM hiep_product ORDER BY price ASC offset
+		#{startIndex} limit
+		#{pageSize}
+	</select>
+
+	<select id="selectHighPriceProduct"
+		resultType="com.hiep.product.entity.ProductEntity">
+		SELECT * FROM hiep_product ORDER BY price DESC offset
+		#{startIndex} limit
+		#{pageSize}
+	</select>
+
+	<select id="searchProduct"
+		resultType="com.hiep.product.entity.ProductEntity">
+		SELECT * FROM hiep_product
+		<if test="searchModel.param !=''">
+			<where>
+				name LIKE CONCAT('%', #{searchModel.param}, '%')
+				or age LIKE
+				CONCAT('%', #{searchModel.param}, '%')
+				or sex LIKE CONCAT('%',
+				#{searchModel.param}, '%')
+				or description LIKE CONCAT('%',
+				#{searchModel.param}, '%')
+			</where>
+		</if>
+		offset #{startIndex} limit #{pageSize}
+	</select>
+
+</mapper>

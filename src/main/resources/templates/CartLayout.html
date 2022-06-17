@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" sxmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HIEP SHOP</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+	<link th:href="@{/assets/css/base.css}" rel="stylesheet" />
+	<link th:href="@{/assets/css/main.css}" rel="stylesheet" />
+	<link th:href="@{/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css}" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="app">
+
+		<!-- header start -->
+		<header th:replace="fragments/header:: header"></header>
+		<!-- header stop -->
+
+
+		<!-- content start -->
+
+
+		<div class="app__container">
+			<div class="grid">
+				<div class="grid__row app__content">
+					<div class="grid__column-12">
+						<div layout:fragment="content"></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- content stop -->
+
+
+		<!-- footer start -->
+		<footer th:replace="fragments/footer:: footer"></footer>
+		<!-- footer stop -->
+
+	</div>
+</body>
+<script th:src="@{/assets/js/main.js}"></script>
+<script th:src="@{/assets/js/conFigErrMess.js}"></script>
+
+</html>

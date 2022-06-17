@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+    
+    </head>
+    <body>
+    	
+		<!-- footer start -->
+		
+		<footer class="footer" th:fragment="footer"> 
+			<div class="grid">
+				<div class="grid__row">
+					<div class="grid__column-2-4">
+						<h3 class="footer__heading">Shopについて</h3>
+						<ul class="footer-list">
+							<li class="footer-item">
+								<a href="" class="footer-item__link">採用情報</a>
+							</li>
+							<li class="footer-item">
+								<a href="" class="footer-item__link">About Shop</a>
+							</li>
+							<li class="footer-item">
+								<a href="" class="footer-item__link">Newsroom</a>
+							</li>
+							<li class="footer-item">
+								<a href="" class="footer-item__link">環境への取り組み</a>
+							</li>
+							<li class="footer-item">
+								<a href="" class="footer-item__link">社会貢献・地域活動</a> </a>
+							</li>
+						</ul>
+					</div>
+					<div class="grid__column-2-4">
+						<h3 class="footer__heading">住所</h3>
+						<ul class="footer-list">
+							<li class="footer-item">
+								<span class="footer-item__address">〒270-0003</span>
+							</li>
+							<li class="footer-item">
+								<span class="footer-item__address">松戸市東平賀508－3</span>
+							</li>
+						</ul>
+					</div>
+					<div class="grid__column-2-4">
+						<h3 class="footer__heading">連絡</h3>
+						<ul class="footer-list">
+							<li class="footer-item">
+								<i class="footer-item-icon far fa-envelope"></i>
+								<a href="mailto:hiepdeptrai0908@gmail.com"
+									class="footer-item__link">hiepdeptrai0908@gmail.com</a>
+							</li>
+							<li class="footer-item">
+								<i class="footer-item-icon fas fa-phone-square-alt"></i>
+								<a href="tel:07044781997" class="footer-item__link">070-4478-1997</a>
+							</li>
+						</ul>
+					</div>
+					<div class="grid__column-2-4">
+						<h3 class="footer__heading">Follow Me</h3>
+						<ul class="footer-list">
+							<li class="footer-item">
+								<a href="" class="footer-item__link">
+									<i class="footer-item-icon fab fa-instagram-square"></i>
+									Instagram
+								</a>
+							</li>
+							<li class="footer-item">
+								<a href="" class="footer-item__link">
+									<i class="footer-item-icon fab fa-facebook"></i>
+									Facebook
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="grid__column-2-4">
+						<h3 class="footer__heading">アプリダウンロード</h3>
+						<div class="footer__download">
+							<img th:src="@{/assets/img/QRcode.png}" alt="Download QR" class="footer__download-qr">
+							<div class="footer__download-apps">
+								<a href="" class="footer__download-app-link">
+									<img th:src="@{/assets/img/app_store.png}" alt="Apple Store"
+										class="footer__download-app-icon">
+								</a>
+								<a href="" class="footer__download-app-link">
+									<img th:src="@{/assets/img/google_play.png}" alt="Google Play"
+										class="footer__download-app-icon">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bootom">
+				<div class="grid__row">
+					<p class="footer__text">© 2021 Inc. or its affiliates</p>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- footer stop -->
+		
+    </body>
+</html>

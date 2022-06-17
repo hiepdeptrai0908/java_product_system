@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout.html}">
+
+<head>
+
+</head>
+
+<body>
+	<div class="home-product" layout:fragment="content">
+		<div class="grid__row">
+			<!-- product item -->
+			<div class="grid__column-2-4" th:each="product : ${listProducts}">
+				<a th:href="@{/{id}(id=${product.id})}" class="home-product-item">
+					<img class="home-product-item__img" th:src="@{/product_img/}+${product.image}"></img>
+					<h4 class="home-product-item__name" th:text="${product.name}"></h4>
+					<div class="home-product-item__price">
+						<span class="home-product-item__price-current" th:text="|¥${product.price}|"></span>
+					</div>
+					<div class="home-product-item__action">
+						<span class="home-product-item__like home-product-item__like--liked">
+							<i class="home-product-item__like-icon-empty far fa-heart"></i>
+							<i class="home-product-item__like-icon-fill fas fa-heart"></i>
+						</span>
+						<div class="home-product-item__rating">
+							<i class="home-product-item__star--gold fas fa-star"></i>
+							<i class="home-product-item__star--gold fas fa-star"></i>
+							<i class="home-product-item__star--gold fas fa-star"></i>
+							<i class="home-product-item__star--gold fas fa-star"></i>
+							<i class="home-product-item__star--gold fas fa-star"></i>
+						</div>
+					</div>
+					<div class="home-product-item__origin">
+						<span class="home-product-item__origin-brand" th:text="|${product.age} 才|">Hiep
+							ショップ</span>
+						<span class="home-product-item__origin-name" th:text="${product.sex}"></span>
+					</div>
+					<div class="home-product-item__favourite">
+						<i class="fas fa-check"></i>
+						<span>お好み</span>
+					</div>
+					<div class="home-product-item__sale-off">
+						<span class="home-product-item__sale-off-percent">20%</span>
+						<span class="home-product-item__sale-off-label">SALE</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
